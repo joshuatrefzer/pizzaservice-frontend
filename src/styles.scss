@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #81aeb6;
+$secondary: #58a1ad;
+$font-color:#404447;
+$bg:#f8f8f9;
+$header: 60px;
+$error:rgb(222, 42, 42);
+
+
+html, body { height: 100%; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: $bg;
+    transition: all 200ms ease-in-out;
+    color: $font-color;
+}
+
+.font {
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+
+p {
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin: 0px 60px;
+}
+
+
+
+
+h1 {
+    letter-spacing: 5px;
+    font-size: 70px;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    color: $font-color
+}
+
+h2 {
+    @extend h1;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+
+a {
+    text-decoration: none;
+    color: $secondary;
+    transition: all ease-in-out 200ms;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+.width-100 {
+    width: 100%;
+    @extend .center;
+}
+
+.half-container {
+    width: 50%;
+    height: 100%;
+    @extend .align-center;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-end {
+    justify-content: end;
+}
+
+.column-center {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.slide-in-right {
+    animation: slide-in-right ease-in-out 600ms;
+}
+
+.site-wrapper {
+    overflow: hidden;
+    @extend .appear;
+    height: 100%;
+    width: 100%;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.appear {
+    animation: appear 500ms ease-in-out;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.white-button {
+    min-width: 150px;
+    max-width: 200px;
+    background-color: white !important;
+    border: 3px solid $font-color;
+}
+
+.navigation {
+    @extend .white-button;
+    z-index: 100;
+}
+
+.error {
+    color: red;
+}
+
+input {
+    border-radius: 10px;
+    border: #404447 2px solid;
+    height: 30px;
+    color: #404447;
+    padding: 8px 12px;
+    @extend .font;
+
+    &:focus {
+        border: #404447 2px solid;
+        outline: none;
+    }
+}
+
+.form-error {
+    border: 2px solid $error;
+}
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.valid {
+    border: 2px solid $secondary !important;
+}
+

@@ -1,0 +1,56 @@
+<div class="site-wrapper">
+  <div class="headline">
+    <h1>Shopping Cart</h1>
+  </div>
+
+  <div class="content">
+    <table>
+      
+      @for (pizza of pizzaCollection(); track $index) {
+      <tbody>
+        <tr class="head-cell without-border">
+          <td>Pizza {{ $index + 1}}</td>
+          <td id="total-price"></td>
+          <td id="total-price"></td>
+        </tr>
+
+        <tr>
+          <td>Pizza Dough</td>
+          <td id="selected-base">{{ pizza.dough }}</td>
+          <td id="base-price">{{ 800 | currency:'$' }}</td>
+        </tr>
+
+        @for (topping of pizza.toppings; track $index) {
+          <tr>
+            <td>Topping {{ $index + 1 }}</td>
+            <td id="topping-1">{{ topping.name }}</td>
+            <td id="topping-1-price">{{ topping.price | currency:'$'}}</td>
+          </tr>
+        }
+
+        @if (pizza.extraWish) {
+          <tr>
+            <td>Your extra wish:</td>
+            <td colspan="2" >{{ pizza.extraWish }}</td>
+          </tr>
+        }
+
+        @if ($index == pizzaCollection().length - 1) {
+          <tr class="without-border total">
+            <td >Total</td>
+            <td></td>
+            <td>{{ total() | currency:'$' }} </td>
+          </tr>
+        }
+
+      </tbody>
+      }
+    </table>
+  </div>
+
+  <div class="width-100">
+    <button class="white-button"  mat-flat-button (click)="submitOrder()">Submit Order</button>
+  </div>
+
+
+</div>

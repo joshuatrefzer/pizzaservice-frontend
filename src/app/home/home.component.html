@@ -1,0 +1,21 @@
+<div class="site-wrapper">
+    <div class="left-column">
+        <div class="column-center">
+            <h1>Buongiorno</h1>
+            <br>
+            <p>Here you can create your own pizza. Just choose your favorite ingedients and put it on our handmade pizza
+                dough.</p>
+        </div>
+
+        <div class="full-width">
+            <button [routerLink]="['/build-pizza']" routerLinkActive="router-link-active"  class="navigation" mat-flat-button>Create Pizza</button>
+        </div>
+        
+    </div>
+
+    <div class="right-column">
+        <div class="animation-container"></div>
+        <img [ngClass]="{zoom: showAnimation()}" class="right-img" loading="eager" src="/img/pizza{{ imgIndex() }}.webp"
+            alt="Bild 1">
+    </div>
+</div>

@@ -1,0 +1,32 @@
+@import "../../styles.scss";
+
+.full-screen {
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 200;
+    overflow: hidden;
+    backdrop-filter: blur(7px);
+    background-color: rgba(50, 98, 92, 0.434);
+
+    @extend .center;
+}
+
+.popup {
+    background-color: white;
+    max-width: 600px;
+    max-height: 300px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px;
+    padding: 30px;
+
+    p {
+        margin: 0;
+    }
+
+    @extend .column-center;
+}
+
+.full-width {
+    display: flex;
+    justify-content: center;
+}

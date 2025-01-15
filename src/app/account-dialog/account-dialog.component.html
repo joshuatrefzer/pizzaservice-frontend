@@ -1,0 +1,9 @@
+<div class="column-center">
+
+    @if (isOnline) {
+    <a (click)="logout()"><button class="white-button" mat-flat-button>Logout</button></a>
+    } @else {
+    <a (click)="toLogin()"><button class="white-button" mat-flat-button>Login</button></a>
+    }
+
+</div>

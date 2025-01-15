@@ -1,0 +1,18 @@
+<header>
+
+    <div class="half-container">
+        <a [routerLink]="['']" >
+            <button mat-flat-button>Home</button>
+        </a>
+        <a [routerLink]="['/build-pizza']" routerLinkActive="router-link-active" >
+            <button mat-flat-button>Create Pizza</button>
+        </a>
+    </div>
+
+    <div class="half-container flex-end">
+        <button (click)="togglePopup()" mat-mini-fab >
+            <mat-icon>person</mat-icon>
+        </button>
+    </div>
+    
+</header>

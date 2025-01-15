@@ -1,0 +1,97 @@
+@if(dataIsFetched()){
+
+<div class="site-wrapper">
+  <div class="grid-column">
+    <div class="column-center center">
+      <h1>Dough</h1>
+      <p>
+        Every good pizza starts with a dough and its sauce. <br>
+        Not every pizza have to start with tomatoes, but it is still a incredible choice.
+      </p>
+
+      <p>
+        @let selectedDough = dough()[selectedBasic()];
+        @if (selectedDough) {
+          <strong>{{ selectedDough.name }}</strong>
+        } @else {
+          <strong>choose your dough</strong>
+        } 
+      </p>
+    </div>
+
+    <div class="basics-container">
+      @for (d of dough(); track $index) {
+      <img class="appear-long" [ngClass]="{'selected': selectedBasic() == $index}" (click)="selectBasic($index)"
+        src="{{baseUrl + d.image_url }}" id="{{$index}}" alt="">
+      }
+    </div>
+
+    <div class="column-center list-container">
+
+      @if (selectedDough) {
+        <p>Pizza Dough {{ selectedDough.price | currency:'$' }}</p>
+      } @else {
+        <p>Pizza Dough 0$</p>
+      }
+      
+      <p>Your Toppings - {{ toppingPrice() | currency:'$' }}</p>
+      <p><b>Pizza Price - {{ stringToNumber(toppingPrice())   +  stringToNumber((selectedDough?.price || 0) ) | currency:'$'}}</b></p>
+      <p>Click <a (click)="openDialog()"><b>here</b></a> to add extra wiches</p>
+      <div class="center margin-top">
+        <button (click)="addToCart()" class="white-button" mat-flat-button>Add to shopping cart</button>
+      </div>
+      <p class="error">{{ validationError }}</p>
+    </div>
+  </div>
+
+
+
+  <div class="grid-column-right">
+    <div class="column-center center">
+      <h1>
+        Toppings
+      </h1>
+      <p>
+        Choose your toppings, customize your pizza! <br>
+        All our products are fresh imported from napoli.
+      </p>
+      <p>
+        <strong>{{selectedToppingList()}}</strong>
+      </p>
+    </div>
+
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Toppings</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="topping-container">
+          @for (topping of toppings(); track $index) {
+          <div (click)="selectTopping($index)" [ngClass]="{'selected': topping.selected}" class="topping">
+            <img src="{{baseUrl + topping.image_url }}" alt="">
+            <p>{{ topping.name }} - <b>{{ ( stringToNumber(topping.price) / 100) }}$</b></p>
+          </div>
+          }
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+
+<dialog #dialog>
+  <div class="column-center">
+    <h2>Your extra wish</h2>
+    <textarea maxlength="200" type="text" [(ngModel)]="extraWish"
+      placeholder="Type in your extra wish for your pizza.."></textarea>
+    <div class="button-container">
+      <button class="white-button" mat-flat-button (click)="closeDialog(true)">Cancel</button>
+      <button *ngIf="extraWish.trim()" class="white-button" mat-flat-button (click)="submit()">Save</button>
+    </div>
+  </div>
+</dialog>
+
+
+}

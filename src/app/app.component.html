@@ -1,0 +1,23 @@
+@if (!authenticationActive()) {
+<app-header (popupChange)="togglePopup($event)"></app-header>
+@if (popup()) {
+<app-account-dialog class="account-menu"></app-account-dialog>
+}
+}
+
+<main [ngClass]="{'full-screen': authenticationActive()}">
+  <router-outlet></router-outlet>
+</main>
+
+@if (cart.pizzaInCart().length > 0) {
+<button (click)="navigateToCart()" matBadgeSize="large" matBadgePosition="before"
+  matBadge="{{cart.pizzaInCart().length}}" class="cart-button" mat-fab>
+  <mat-icon>shopping_cart</mat-icon>
+</button>
+}
+
+@if (popupService.status === "open") {
+  <app-dialog></app-dialog>
+}
+
+

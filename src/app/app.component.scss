@@ -1,0 +1,51 @@
+@import "../styles.scss";
+
+
+main {
+    height: calc(100dvh - $header);
+    position: relative;
+}
+
+.full-screen {
+    height: 100vh;
+}
+
+.cart-button {
+    @extend .slide-in-right;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100;
+}
+
+.account-menu {
+    animation: slide-in 300ms ease-in-out;
+    position: absolute;
+    top: $header;
+    right: 0;
+    background-color: $primary;
+    border-bottom-left-radius: 10px;
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+app-account-dialog {
+    z-index: 20;
+}
+
+app-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+}

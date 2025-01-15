@@ -1,0 +1,47 @@
+@import "../../styles.scss";
+
+.site-wrapper {
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    justify-content: center
+}
+
+.headline {
+    @extend .center;
+}
+
+.content {
+  width: 70vw;
+  height: fit-content;
+  max-height: 400px;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+  }
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .head-cell {
+    font-weight: bold;
+    background-color: $primary;
+  }
+
+  .total {
+    font-weight: bold;
+    background-color:rgb(207, 207, 207);
+  }
+
+  .without-border * {
+    border: none;
+  }

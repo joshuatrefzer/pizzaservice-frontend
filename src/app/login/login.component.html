@@ -1,0 +1,13 @@
+<div class="full-screen">
+    <form [formGroup]="loginForm" class="column-center">
+        <h2>LOGIN</h2>
+        <input [ngClass]="{'form-error': isInvalid('username') , 'valid': isValid('username')}" formControlName="username" placeholder="username" type="text" >
+        <input [ngClass]="{'form-error': isInvalid('password'), 'valid': isValid('password')}" formControlName="password" placeholder="password" type="password">
+
+        <div class="full-width button-container">
+            <button [routerLink]="['/signup']" routerLinkActive="router-link-active"  class="white-button" mat-flat-button>Go to sign up</button>
+            <button (click)="submit()" [ngClass]="{'disabled': !loginForm.valid }" class="white-button" mat-flat-button>LOGIN</button>
+            
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+@import "../../styles.scss";
+
+
+header {
+    box-sizing: border-box;
+    padding: 10px;
+    @extend .appear;
+    @extend .align-center;
+    height: $header;
+    background-color: $primary;
+    width: 100%;
+}
+
+.half-container {
+    gap: 10px;
+}
+
