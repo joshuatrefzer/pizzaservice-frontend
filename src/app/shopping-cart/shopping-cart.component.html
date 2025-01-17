@@ -10,8 +10,10 @@
       <tbody>
         <tr class="head-cell without-border">
           <td>Pizza {{ $index + 1}}</td>
-          <td id="total-price"></td>
-          <td id="total-price"></td>
+          <td></td>
+          <td (click)="remove($index)" class="remove" > 
+              remove pizza
+          </td>
         </tr>
 
         <tr>

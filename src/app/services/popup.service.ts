@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 
-export type PopupType = "signUpSuccess" | "error" | "info" | "forceLogin" | undefined; 
+export type PopupType = "signUpSuccess" | "error" | "info" | "forceLogin" | "accountHandling" | undefined; 
 
 @Injectable({
   providedIn: 'root'

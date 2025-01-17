@@ -35,6 +35,11 @@ table {
   .head-cell {
     font-weight: bold;
     background-color: $primary;
+    &:hover {
+      .remove {
+        opacity: 1;
+      }
+    }
   }
 
   .total {
@@ -44,4 +49,21 @@ table {
 
   .without-border * {
     border: none;
+  }
+
+  .remove {
+    transition: all 200ms ease-out;
+    opacity: 0;
+    color:red;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 20px;
+    border: 1px 1px solid red;
+    padding-right: 20px;
+    z-index: 20;
+    &:hover {
+      cursor: pointer !important;
+    }
   }

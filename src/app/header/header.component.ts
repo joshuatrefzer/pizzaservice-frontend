@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,15 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
   @Output() popupChange = new EventEmitter<boolean>();
 
-  private popupState: boolean = false; // Lokaler Zustand
+  constructor(private popupService: PopupService){}
+
+  private popupState: boolean = false; 
 
   public togglePopup(): void {
-    this.popupState = !this.popupState;          
-    this.popupChange.emit(this.popupState);      
+    this.popupService.showPopup("accountHandling");
+
+    // this.popupState = !this.popupState;          
+    // this.popupChange.emit(this.popupState);      
   }
 
 

@@ -9,22 +9,25 @@ import { Router } from '@angular/router';
 import { stringToNumber } from '../utils';
 import { User, UserService } from '../services/user.service';
 import { PopupService } from '../services/popup.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [CurrencyPipe, MatButtonModule],
+  imports: [CurrencyPipe, MatButtonModule, MatIconModule],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss'
 })
 export class ShoppingCartComponent {
   stringToNumber = stringToNumber;
-  public pizzaCollection: WritableSignal<Pizza[]> = signal([]);
   user:User | any;
 
+
+  public pizzaCollection: WritableSignal<Pizza[]> = signal([]);
+  
   total: Signal<number> = computed(() => {
     return this.pizzaCollection().reduce((sum, pizza) => {
-    debugger      
       sum += 800;
+      debugger
       sum += pizza.toppings.reduce((toppingSum, topping) => toppingSum + stringToNumber(topping.price), 0);
       return sum;
     }, 0);
@@ -52,6 +55,19 @@ export class ShoppingCartComponent {
     this.exportToPDF();
     this.router.navigate(['success']);
   }
+
+  public remove(index: number) {
+  const collection = this.pizzaCollection();
+  const updatedCollection = [...collection]; 
+  updatedCollection.splice(index, 1); 
+  this.pizzaCollection.set(updatedCollection); 
+
+  this.shoppingCart.pizzaInCart.set(updatedCollection);
+
+  if (updatedCollection.length === 0) {
+    this.router.navigate(['build-pizza']);
+  }
+}
 
 
   async exportToPDF() {

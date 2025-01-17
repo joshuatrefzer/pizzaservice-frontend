@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { PopupService } from '../services/popup.service';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
+import { AccountDialogComponent } from '../account-dialog/account-dialog.component';
 
 @Component({
   selector: 'app-dialog',
-  imports: [MatButtonModule, RouterLink],
+  imports: [MatButtonModule, RouterLink, AccountDialogComponent],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss'
 })
@@ -24,4 +25,7 @@ export class DialogComponent {
     }
   }
 
+  public closePopup() {
+    this.popupService.closePopup();
+  }
 }

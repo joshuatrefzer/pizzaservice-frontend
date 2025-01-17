@@ -1,5 +1,7 @@
-<div class="appear full-screen">
+<div (click)="closePopup()" class="appear full-screen">
 
+
+    @if (!checkCase("accountHandling")) {
     <div class="popup">
 
         @if (checkCase("signUpSuccess")) {
@@ -12,30 +14,36 @@
         }
 
         @if (checkCase("error") ) {
-            <p class="error">{{ popupService.message }}</p>
-            <div class="full-width">
-                <button  (click)="popupService.closePopup()" class="white-button" mat-flat-button>close</button>
-            </div>  
+        <p class="error">{{ popupService.message }}</p>
+        <div class="full-width">
+            <button (click)="popupService.closePopup()" class="white-button" mat-flat-button>close</button>
+        </div>
         }
 
         @if (checkCase("info")) {
-            <p>{{ popupService.message }}</p>
-            <div class="full-width">
-                <button  (click)="popupService.closePopup()" class="white-button" mat-flat-button>close</button>
-            </div>  
+        <p>{{ popupService.message }}</p>
+        <div class="full-width">
+            <button (click)="popupService.closePopup()" class="white-button" mat-flat-button>close</button>
+        </div>
         }
 
         @if (checkCase("forceLogin")) {
-            <p>You have to be logged in to order your pizza.. otherwise, we don't know where to deliver </p>
-            <div class="full-width">
-                <button  (click)="router.navigate(['login']); popupService.closePopup();" class="white-button" mat-flat-button>Login</button>
-                <button  (click)="router.navigate(['login']); popupService.closePopup();" class="white-button" mat-flat-button>Sign Up</button>
-            </div>  
+        <p>You have to be logged in to order your pizza.. otherwise, we don't know where to deliver </p>
+        <div class="full-width">
+            <button (click)="router.navigate(['login']); popupService.closePopup();" class="white-button"
+                mat-flat-button>Login</button>
+            <button (click)="router.navigate(['signup']); popupService.closePopup();" class="white-button"
+                mat-flat-button>Sign Up</button>
+        </div>
         }
 
 
-
-        
     </div>
+    }
+
+    @if (checkCase("accountHandling")) {
+    <app-account-dialog class="account-menu"></app-account-dialog>
+    }
+
 
 </div>

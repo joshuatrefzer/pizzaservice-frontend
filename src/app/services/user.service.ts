@@ -82,6 +82,7 @@ export class UserService {
   }
 
   public logout(){
+    this.user = "offline";
     localStorage.removeItem("user");
     this.router.navigate(['']);
     this.popupService.showPopup("info" , "Logout successful, if you want to order something, you need to login again.");
