@@ -26,6 +26,10 @@ export class DialogComponent {
   }
 
   public closePopup() {
+    if (this.checkCase("forceLogin")) {
+      return;
+    }
+    
     this.popupService.closePopup();
   }
 }
