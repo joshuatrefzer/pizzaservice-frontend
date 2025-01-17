@@ -1,8 +1,5 @@
 @if (!authenticationActive()) {
-<app-header (popupChange)="togglePopup($event)"></app-header>
-@if (popup()) {
-<app-account-dialog class="account-menu"></app-account-dialog>
-}
+<app-header></app-header>
 }
 
 <main [ngClass]="{'full-screen': authenticationActive()}">
