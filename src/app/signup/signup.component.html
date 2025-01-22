@@ -2,21 +2,34 @@
     <form [formGroup]="signUpForm" class="column-center">
         <h2>SIGN UP</h2>
         <p>Your login data</p>
-        <input [ngClass]="{'form-error': isInvalid('username') , 'valid': isValid('username')}" formControlName="username" placeholder="username" type="text" >
-        <input [ngClass]="{'form-error': isInvalid('password'), 'valid': isValid('password')}" formControlName="password" placeholder="password" type="password">
+        <input [ngClass]="{'form-error': isInvalid('username') , 'valid': isValid('username')}"
+            formControlName="username" placeholder="username" type="text">
+        <input [ngClass]="{'form-error': isInvalid('password'), 'valid': isValid('password')}"
+            formControlName="password" placeholder="password" type="password">
         <p>Your adress</p>
 
-        <input [ngClass]="{'form-error': isInvalid('firstname') , 'valid': isValid('firstname') }"formControlName="firstname" placeholder="firstname" type="text">
-        <input  [ngClass]="{'form-error': isInvalid('lastname') , 'valid': isValid('lastname') }" formControlName="lastname" placeholder="lastname" type="text">
+        <input [ngClass]="{'form-error': isInvalid('firstname') , 'valid': isValid('firstname') }"
+            formControlName="firstname" placeholder="firstname" type="text">
+        <input [ngClass]="{'form-error': isInvalid('lastname') , 'valid': isValid('lastname') }"
+            formControlName="lastname" placeholder="lastname" type="text">
         <div class="full-width">
-            <input [ngClass]="{'form-error': isInvalid('street') , 'valid': isValid('street')}" formControlName="street" style="width: 90%;" placeholder="street" type="text" pattern="">
-            <input [ngClass]="{'form-error': isInvalid('houseNumber') , 'valid': isValid('houseNumber')}" formControlName="houseNumber" class="adress" placeholder="house nr." type="text">
+            <input [ngClass]="{'form-error': isInvalid('street') , 'valid': isValid('street')}" formControlName="street"
+                style="width: 90%;" placeholder="street" type="text" pattern="">
+            <input [ngClass]="{'form-error': isInvalid('houseNumber') , 'valid': isValid('houseNumber')}"
+                formControlName="houseNumber" class="adress" placeholder="house nr." type="text">
         </div>
-        <input [ngClass]="{'form-error': isInvalid('postalCode'), 'valid': isValid('postalCode')}" formControlName="postalCode" class="adress" placeholder="postal code" type="text">
+        <div class="full-width">
+            <input [ngClass]="{'form-error': isInvalid('postalCode'), 'valid': isValid('postalCode')}"
+                formControlName="postalCode" class="adress" placeholder="postal code" type="text">
+            <input class="adress" placeholder="city" type="text">
+        </div>
+
         <div class="full-width button-container">
-            <button [routerLink]="['/login']" routerLinkActive="router-link-active"  class="white-button" mat-flat-button>Go to login</button>
-            <button (click)="submit()" [ngClass]="{'disabled': !signUpForm.valid }" class="white-button" mat-flat-button>SIGN UP</button>
-            
+            <button [routerLink]="['/login']" routerLinkActive="router-link-active" class="white-button"
+                mat-flat-button>Go to login</button>
+            <button (click)="submit()" [ngClass]="{'disabled': !signUpForm.valid }" class="white-button"
+                mat-flat-button>SIGN UP</button>
+
         </div>
     </form>
 

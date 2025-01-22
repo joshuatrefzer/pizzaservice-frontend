@@ -92,9 +92,10 @@ export class ShoppingCartComponent {
       pdf.setFont('helvetica', 'normal');
       const deliveryAddress = `
         Delivery Address:
-        ${this.user?.firstname + this.user?.lastname},
+        ${this.user?.firstname},${this.user?.lastname},
         ${this.user.street} ${this.user.house_nr},
-        ${this.user.postal_code},
+        ${this.user.postal_code}, 
+        example city
       `;
 
       const addressLines = pdf.splitTextToSize(deliveryAddress, 180);
